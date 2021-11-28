@@ -7,6 +7,7 @@ typechain
 yarn.lock
 package-lock.json
 .openzeppelin
+yarn-error.log
 
 #Hardhat files
 cache
