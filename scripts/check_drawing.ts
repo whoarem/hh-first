@@ -5,9 +5,11 @@ const main = async () => {
   const accounts = await ethers.provider.listAccounts()
   console.log(accounts)
 
-  const address = '0x99A6a8b44a1EeEadd23E26D868d4e70aF987f59c'
-  const Drawing = await ethers.getContractFactory('Drawing')
-  const dwg = Drawing.attach(address)
+  const address = '0xc5840858Ac54e1Cc88A2c887578879395F797f26'
+  const DrawingUpgradeable = await ethers.getContractFactory(
+    'DrawingUpgradeable'
+  )
+  const dwg = DrawingUpgradeable.attach(address)
 
   await dwg.mint(accounts[0])
   const items = await dwg.balanceOf(accounts[0])
@@ -18,6 +20,7 @@ const main = async () => {
   console.log(await dwg.symbol())
   console.log((await dwg.totalSupply()).toString())
   console.log(await dwg.tokenByIndex(parseInt(items.toString()) - 1))
+  console.log(await dwg.test())
 }
 
 main().catch((error) => {
