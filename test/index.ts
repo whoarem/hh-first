@@ -34,3 +34,20 @@ describe('Box', function () {
     expect(value.toString()).to.equal('43')
   })
 })
+
+describe('Drawing', function () {
+  it('upgraded box increment function call shoud update the value -> value + 1', async () => {
+    const Drawing = await ethers.getContractFactory('Drawing')
+    const DrawingUpgradeable = await ethers.getContractFactory(
+      'DrawingUpgradeable'
+    )
+
+    const instance = await upgrades.deployProxy()
+    const upgraded = await upgrades.upgradeProxy(instance.address, BoxV2)
+
+    await upgraded.increment()
+
+    const value = await upgraded.retrieve()
+    expect(value.toString()).to.equal('43')
+  })
+})

@@ -5,11 +5,7 @@ async function main() {
     'DrawingUpgradeable'
   )
   console.log('Deploying DrawingUpgradeable...')
-  const dwg = await upgrades.deployProxy(DrawingUpgradeable, [
-    'Drawing',
-    'DWG',
-    'dwg_uri',
-  ])
+  const dwg = await upgrades.deployProxy(DrawingUpgradeable)
   await dwg.deployed()
   console.log('DrawingUpgradeable deployed to:', dwg.address)
 }
